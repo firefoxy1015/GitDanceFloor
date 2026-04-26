@@ -201,8 +201,6 @@ let countdownId = null;
 let nextAlertMs = 0;
 let nextSpawnMs = 0;
 let audioCtx = null;
-let alarmIntervalId = null;
-let alarmStopAt = 0;
 
 const $ = id => document.getElementById(id);
 
@@ -300,7 +298,6 @@ function stop() {
   clearInterval(countdownId);
   countdownId = null;
   timerId = null;
-  stopAlarm();
   $("toggleBtn").textContent = "啟動提醒";
   $("toggleBtn").className = "btn-start";
   $("status").textContent = "已停止";
@@ -354,38 +351,20 @@ function playBeep() {
       o.stop(audioCtx.currentTime + start + dur);
     };
 
-    // 一輪警報聲 ~ 1.6 秒
-    const playOneCycle = () => {
-      tone(1000, 0,    0.35);
-      tone(1400, 0.4,  0.35);
-      tone(1000, 0.8,  0.35);
-      tone(1400, 1.2,  0.4);
-    };
-
-    playOneCycle();
-    // 每 1.7 秒重播一次，總共最多響 30 秒（除非按收到）
-    if (alarmIntervalId) clearInterval(alarmIntervalId);
-    alarmStopAt = Date.now() + 30000;
-    alarmIntervalId = setInterval(() => {
-      if (Date.now() >= alarmStopAt) {
-        stopAlarm();
-        return;
-      }
-      playOneCycle();
-    }, 1700);
+    // 一次警報聲 ~ 4 秒，響完自動停
+    tone(1000, 0,    0.35);
+    tone(1400, 0.4,  0.35);
+    tone(1000, 0.8,  0.35);
+    tone(1400, 1.2,  0.4);
+    tone(1000, 1.7,  0.35);
+    tone(1400, 2.1,  0.35);
+    tone(1000, 2.5,  0.35);
+    tone(1400, 2.9,  0.5);
   } catch (e) { log("音效播放失敗: " + e.message); }
-}
-
-function stopAlarm() {
-  if (alarmIntervalId) {
-    clearInterval(alarmIntervalId);
-    alarmIntervalId = null;
-  }
 }
 
 function dismissAlert() {
   $("alertOverlay").classList.remove("show");
-  stopAlarm();
 }
 
 $("toggleBtn").addEventListener("click", () => {
