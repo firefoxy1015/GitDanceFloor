@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shenli Mining Machinery — Interactive Product Catalog 2025</title>
+  <meta name="description" content="Interactive English-language product gallery for Hebei Shenli Pneumatic Machinery — pneumatic rock drills, breakers, drill bits, air compressors and mining electric tricycles." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Top nav -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="logo">SL</span> SHENLI MACHINERY</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#catalog">Catalog</a>
+        <a href="#s250">S250 Drill</a>
+        <a href="#rockdrill">Rock Drills</a>
+        <a href="#airpick">Pneumatic Picks</a>
+        <a href="#drillbit">Bits & Rods</a>
+        <a href="#compressor">Compressors</a>
+        <a href="#tricycle">Tricycles</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-tag">Pneumatic Mining Machinery · Since 2005</span>
+      <h1>MINING <span class="accent">MACHINERY</span></h1>
+      <h2>Interactive Catalog 2025</h2>
+      <p>Explore the complete pneumatic-powered mining product line from Hebei Shenli Pneumatic Machinery. Click any category card to dive into product details, specifications, and applications.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#catalog">Browse the catalog</a>
+        <a class="btn btn-ghost" href="#contact">Contact our team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="about-text reveal">
+        <p class="section-eyebrow">About us</p>
+        <h2 class="section-title">Pneumatic experts since 2005</h2>
+        <p>Hebei Shenli Pneumatic Machinery Co., Ltd. was established in 2005 with a total investment of 60 million yuan. We employ more than 60 people and produce more than 20 categories of pneumatic mining equipment, sold across 30+ provinces in China and exported to South America, Africa, Asia-Pacific and beyond.</p>
+        <p>The plant integrates research & development, production, sales, after-sales service and parts supply — providing a complete one-stop quality assurance for every customer.</p>
+        <p>We have successfully passed ISO 9001 certification and obtained the China Light & Medium Products Quality Assurance Center "Double-guarantee" demonstration unit certificate, in addition to multiple patents transferred from Epiroc (Sweden) for next-generation rock drills.</p>
+        <div class="about-stats">
+          <div class="stat"><div class="v">20+</div><div class="k">Years</div></div>
+          <div class="stat"><div class="v">100k+</div><div class="k">Units / year</div></div>
+          <div class="stat"><div class="v">30+</div><div class="k">Countries</div></div>
+        </div>
+      </div>
+      <div class="about-photo reveal" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- Catalog -->
+  <section id="catalog">
+    <div class="container">
+      <p class="section-eyebrow">Product catalog</p>
+      <h2 class="section-title">Click a category to explore</h2>
+      <p class="section-lede">Six product families cover every step of underground production — from drilling and breaking the rock to delivering the ore to the surface.</p>
+      <div class="categories" id="cat-grid"></div>
+    </div>
+  </section>
+
+  <!-- Drawer (category level) -->
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <header class="drawer-header">
+      <div>
+        <div class="eyebrow" id="drawer-eyebrow"></div>
+        <h2 id="drawer-title"></h2>
+      </div>
+      <button class="close" id="drawer-close" aria-label="Close">×</button>
+    </header>
+    <div class="drawer-hero" id="drawer-hero"></div>
+    <p class="drawer-summary" id="drawer-summary"></p>
+    <div class="drawer-body">
+      <h3 style="margin:14px 0 0;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:var(--c-muted)">Products in this range — click for details</h3>
+      <div class="product-list" id="product-list"></div>
+    </div>
+  </aside>
+
+  <!-- Modal (product level) -->
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal" id="modal" aria-hidden="true">
+    <article class="modal-card">
+      <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+      <div class="modal-photo" id="modal-photo"></div>
+      <div class="modal-body">
+        <div class="eyebrow" id="modal-eyebrow"></div>
+        <h2 id="modal-title"></h2>
+        <p class="sub" id="modal-sub"></p>
+        <p id="modal-desc"></p>
+        <div id="modal-highlights-wrap"></div>
+        <h3>Specifications</h3>
+        <table class="spec-table"><tbody id="modal-specs"></tbody></table>
+      </div>
+    </article>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container footer-grid">
+      <div>
+        <h4>Hebei Shenli Pneumatic Machinery</h4>
+        <p>No.18 Qukou Industry District, Xianghe County, Hebei Province, China</p>
+        <p style="margin-top:14px;color:var(--c-muted)">"Honesty wins the market — Shenli creates quality."</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Tel: +86-186-3040-8666</p>
+        <p>WhatsApp: +86-137-5227-9993</p>
+        <p>Email: tjshenglida@gmail.com</p>
+        <p>Web: www.xhshenli.com</p>
+      </div>
+      <div>
+        <h4>Product families</h4>
+        <p><a href="#s250">S250 Pneumatic Drill</a></p>
+        <p><a href="#rockdrill">Pneumatic Rock Drills</a></p>
+        <p><a href="#airpick">Pneumatic Breakers</a></p>
+        <p><a href="#drillbit">Drill Bits & Rods</a></p>
+        <p><a href="#compressor">Air Compressors</a></p>
+        <p><a href="#tricycle">Mining Electric Tricycles</a></p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:32px;font-size:12px;color:var(--c-muted)">© 2025 Hebei Shenli Pneumatic Machinery Co., Ltd. — Interactive catalog generated from the 2025 print edition.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
