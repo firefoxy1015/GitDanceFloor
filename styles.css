@@ -95,7 +95,8 @@ a:hover { text-decoration: underline; }
 .s-hero-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
 }
-@media (max-width: 900px) { .s-hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+@media (max-width: 1080px) { .s-hero-grid { gap: 36px; } }
+@media (max-width: 720px) { .s-hero-grid { grid-template-columns: 1fr; gap: 32px; } }
 
 .hero-tag {
   display: inline-block;
@@ -244,7 +245,8 @@ section { padding: 90px 0; }
 /* ─── Story (Epiroc) ─────────────────────────────────────────────── */
 .story { background: var(--c-bg); }
 .story-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
-@media (max-width: 880px) { .story-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1080px) { .story-grid { gap: 36px; } }
+@media (max-width: 720px) { .story-grid { grid-template-columns: 1fr; gap: 28px; } }
 .story-grid p { line-height: 1.8; color: #c1c7d0; margin: 0 0 16px; }
 .story-grid p strong { color: var(--c-text); }
 .story-photo {
@@ -316,7 +318,8 @@ section { padding: 90px 0; }
 /* ─── Specs ──────────────────────────────────────────────────────── */
 .specs { background: var(--c-bg-2); }
 .specs-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: start; }
-@media (max-width: 880px) { .specs-grid { grid-template-columns: 1fr; gap: 32px; } }
+@media (max-width: 1080px) { .specs-grid { gap: 36px; } }
+@media (max-width: 720px) { .specs-grid { grid-template-columns: 1fr; gap: 28px; } }
 .spec-table {
   width: 100%; border-collapse: collapse; font-size: 14.5px;
   background: var(--c-bg-3); border-radius: 12px; overflow: hidden;
@@ -537,7 +540,8 @@ section { padding: 90px 0; }
 /* ─── Contact ────────────────────────────────────────────────────── */
 .contact { background: var(--c-bg-2); border-top: 1px solid var(--c-line); }
 .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
-@media (max-width: 880px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } }
+@media (max-width: 1080px) { .contact-grid { gap: 36px; } }
+@media (max-width: 720px) { .contact-grid { grid-template-columns: 1fr; gap: 28px; } }
 .contact-grid p { line-height: 1.7; color: var(--c-muted); margin: 0 0 14px; }
 .contact-pills { display: flex; gap: 10px; flex-wrap: wrap; }
 .contact-pills .btn { white-space: nowrap; }
