@@ -1,31 +1,10 @@
 (() => {
   const data = window.CATALOG;
 
-  // --- Render category grid -------------------------------------------------
-  const grid = document.getElementById("cat-grid");
+  // Build lookup: product id -> {category, product}
+  const productIndex = new Map();
   data.categories.forEach((cat) => {
-    const el = document.createElement("a");
-    el.className = "cat-card reveal";
-    el.id = cat.id;
-    el.href = "#" + cat.id;
-    el.dataset.cat = cat.id;
-    el.innerHTML = `
-      <div class="photo" style="background-image:url('${cat.cardImage}')"></div>
-      <div class="body">
-        <span class="tag">${cat.products.length} products</span>
-        <h3>${cat.name}</h3>
-        <p>${cat.tagline}</p>
-        <div class="meta">
-          <span>View product range</span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </div>
-      </div>`;
-    el.addEventListener("click", (e) => {
-      e.preventDefault();
-      openDrawer(cat.id);
-      history.replaceState(null, "", "#" + cat.id);
-    });
-    grid.appendChild(el);
+    cat.products.forEach((p) => productIndex.set(p.id, { cat, p }));
   });
 
   // --- Drawer ---------------------------------------------------------------
@@ -131,13 +110,22 @@
     else if (drawer.classList.contains("open")) closeDrawer();
   });
 
-  // --- Open category from URL hash on load ---------------------------------
-  window.addEventListener("DOMContentLoaded", () => {
-    const id = (location.hash || "").replace("#", "");
-    if (id && data.categories.some((c) => c.id === id)) {
-      // small delay so reveal animations don't fight the modal
-      setTimeout(() => openDrawer(id), 250);
-    }
+  // --- Bind family-grid buttons ---------------------------------------------
+  document.querySelectorAll("[data-product]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = btn.dataset.product;
+      const entry = productIndex.get(id);
+      if (entry) openModal(entry.cat, entry.p);
+    });
+  });
+
+  // --- Bind category pills --------------------------------------------------
+  document.querySelectorAll("[data-cat]").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      openDrawer(el.dataset.cat);
+    });
   });
 
   // --- Reveal-on-scroll -----------------------------------------------------
