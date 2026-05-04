@@ -162,19 +162,24 @@ a:hover { text-decoration: underline; }
 .s-hero-photo {
   position: relative;
   border-radius: 20px;
-  background: linear-gradient(180deg, #f7f8fa 0%, #d4d9e0 100%);
   overflow: hidden;
   box-shadow: var(--shadow-hi);
+  background: #0a0c10;
 }
 .s-hero-photo img {
   width: 100%; height: auto; display: block;
-  mix-blend-mode: multiply;
+}
+.s-hero-photo::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(11,14,19,0.55) 100%);
+  pointer-events: none;
 }
 .hero-watermark {
-  position: absolute; bottom: 18px; right: 22px;
+  position: absolute; bottom: 22px; right: 28px;
   font-weight: 800; letter-spacing: 0.4em;
-  color: rgba(0,0,0,0.18);
-  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  font-size: 13px;
+  z-index: 1;
 }
 
 /* ─── Overview band ──────────────────────────────────────────────── */
