@@ -95,8 +95,8 @@ a:hover { text-decoration: underline; }
 .s-hero-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
 }
-@media (max-width: 1080px) { .s-hero-grid { gap: 36px; } }
-@media (max-width: 720px) { .s-hero-grid { grid-template-columns: 1fr; gap: 32px; } }
+@media (max-width: 1080px) { .s-hero-grid { grid-template-columns: 1.15fr 1fr; gap: 32px; } }
+@media (max-width: 720px) { .s-hero-grid { grid-template-columns: 1fr; gap: 28px; } }
 
 .hero-tag {
   display: inline-block;
@@ -118,10 +118,13 @@ a:hover { text-decoration: underline; }
   font-size: 17px; color: #c8cdd5; line-height: 1.7; margin: 0 0 28px;
   max-width: 540px;
 }
+@media (max-width: 1080px) {
+  .s-hero-text h1 { font-size: clamp(56px, 9vw, 92px); }
+  .s-hero-text .lede { font-size: 15.5px; }
+}
 @media (max-width: 720px) {
   .s-hero-text h1 { font-size: 64px; margin-bottom: 18px; }
   .s-hero-text h1 .accent { font-size: 1.4em; }
-  .s-hero-text .lede { font-size: 15.5px; }
   .hero-tag { margin-bottom: 16px; }
   .hero-meta { margin-bottom: 22px; }
   .hero-cta .btn { padding: 11px 20px; font-size: 13.5px; }
@@ -355,9 +358,12 @@ section { padding: 90px 0; }
 .spec-table td:first-child { color: var(--c-muted); width: 42%; letter-spacing: 0.02em; }
 .spec-table td:last-child { color: var(--c-text); font-weight: 500; }
 .spec-table tr:hover td { background: rgba(255,255,255,0.02); }
-@media (max-width: 480px) {
+@media (max-width: 1080px) {
   .spec-table td { padding: 11px 14px; font-size: 13.5px; }
-  .spec-table td:first-child { width: 44%; }
+  .spec-table td:first-child { width: 46%; }
+}
+@media (max-width: 480px) {
+  .spec-table td { padding: 10px 12px; font-size: 13px; }
 }
 
 /* ─── Applications ───────────────────────────────────────────────── */
@@ -395,7 +401,9 @@ section { padding: 90px 0; }
   font-size: 12px; letter-spacing: 0.06em;
   color: var(--c-gold); margin-bottom: 14px;
   font-family: "JetBrains Mono", monospace;
-  word-break: break-word;
+  overflow-wrap: anywhere;
+  word-spacing: 0.05em;
+  line-height: 1.55;
 }
 .acc-card p { margin: 0; color: var(--c-muted); line-height: 1.7; font-size: 14.5px; }
 
